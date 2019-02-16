@@ -9,7 +9,7 @@ collection = db.users
 
 def create_new_user(username, password):
     if (get_user(username) == None):
-        collection.insert(
+        user = collection.insert(
             {
                 "username": username,
                 "password": hash(username, password),
@@ -18,9 +18,9 @@ def create_new_user(username, password):
                 "creaturesUnlocked": {}
             }
         )
-        return True
+        return user
     else:
-        return False
+        return None
 
 def get_user(username):
     return collection.find_one({"username": username})

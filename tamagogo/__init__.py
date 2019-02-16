@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, session, flash
 from utils import mongo_utils
 from functools import wraps
 import os
@@ -11,7 +11,6 @@ app.secret_key = os.urandom(16)
 def require_login(f):
     @wraps(f)
     def inner(*args, **kwargs):
-        print(session)
         if 'uid' not in session:
             flash("Please log in")
             return redirect(url_for("root"))
@@ -22,11 +21,15 @@ def require_login(f):
 
 @app.route("/")
 def root():
+    print("uid in session: " + str("uid" in session))
     return render_template("login.html")
 
 
 @app.route("/login", methods=["POST"])
 def login():
+    print(request.form["username"])
+    print(request.form["password"])
+
     if ("username" in request.form and "password" in request.form):
         if (mongo_utils.authenticate(request.form["username"], request.form["password"])):
             user = mongo_utils.get_user(username)
@@ -43,7 +46,7 @@ def login():
 @app.route("/signup", methods=["POST"])
 def signup():
     if ("username" in request.form and "password" in request.form):
-        user = mongo_utils.create_new_user(username, password)
+        user = mongo_utils.create_new_user(request.form["username"], request.form["password"])
         if (user != None):
             session["uid"] = user["_id"]
             return redirect(url_for("home"))
