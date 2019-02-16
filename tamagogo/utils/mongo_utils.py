@@ -1,5 +1,6 @@
 from pymongo import MongoClient
 from hashlib import sha256
+from bson.objectid import ObjectId
 
 
 client = MongoClient()
@@ -18,9 +19,9 @@ def create_new_user(username, password):
                 "creaturesUnlocked": {}
             }
         )
-        return user
+        return True
     else:
-        return None
+        return False
 
 def get_user(username):
     return collection.find_one({"username": username})
