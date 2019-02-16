@@ -1,0 +1,16 @@
+
+.backing {
+    background-color: rgba(255, 255, 255, .1);
+    padding: 20px;
+    margin-left: 5vw;
+    margin-right: 5vw;
+}
+
+p {
+    text-align: left;
+}
+
+.dev-img {
+    width: 12vw;
+}
+

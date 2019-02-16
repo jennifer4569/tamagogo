@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}About -- Tamagogo!{% endblock %}
+
+{% block css %} <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/about.css' ) }}"> {% endblock %}
+
+{% block body %}
+<div class="backing rounded">
+  <h1> Introduction </h1>
+  <p>
+    Welcome to Tamagogo! Ever wanted wanted to do random acts of kindness, but felt like there was no way of keeping track of how often you've been doing them? With Tamagogo, you can keep track of all the good deeds you've done every day, as well as having fun doing so! Each time you help someone out, gain points based on the type of action you've done, and collect eggs based on your deeds!
+  </p>
+  <br />
+  <h1> How to Play </h1>
+  <p>
+    Tamago is a single player collection game. Add and keep track of each good deed you've done through the Deeds page. For each good deed you do, you will be rewarded a certain amount of points. Get enough points, and you will be able to unlock new, cooler eggs! Happy collecting! :)
+  </p> <br /><br /><br />
+  <h1> See Our Code! </h1>
+  <p>We are completely open source, so feel free to check out our <a href="https://github.com/jennifer4569/tamagogo">source code</a>!
+  </p><br />
+  <h1> Meet the Dev Team! </h1>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-8 col-lg-4 pic"><center><img id="jake" src="{{ url_for('static', filename='img/jake.jpg' ) }}" class="rounded-circle dev-img"><br /><a href="https://github.com/jzaia18">Jake Zaia</a></center>
+      </div>
+      <div class="col-xs-8 col-lg-4 pic"><center><img id="jennifer" src="{{ url_for('static', filename='img/jennifer.jpg' ) }}" class="rounded-circle dev-img"><br /> <a href="https://github.com/jennifer4569">Jennifer Zhang</a></center>
+      </div>
+    </div>
+  </div>
+  
+</div>
+{% endblock %}
