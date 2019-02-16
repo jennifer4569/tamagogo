@@ -11,6 +11,8 @@ app.secret_key = os.urandom(16)
 def require_login(f):
     @wraps(f)
     def inner(*args, **kwargs):
+        print("CHECK")
+        print(session["uid"])
         if 'uid' not in session:
             flash("Please log in")
             return redirect(url_for("root"))
@@ -21,7 +23,8 @@ def require_login(f):
 
 @app.route("/")
 def root():
-    print("uid in session: " + str("uid" in session))
+    if "uid" in session:
+        return redirect(url_for("home"))
     return render_template("login.html")
 
 
@@ -32,9 +35,9 @@ def login():
 
     if ("username" in request.form and "password" in request.form):
         if (mongo_utils.authenticate(request.form["username"], request.form["password"])):
-            user = mongo_utils.get_user(username)
+            user = mongo_utils.get_user(request.form["username"])
             if (user != None):
-                session["uid"] = user["_id"]
+                session["uid"] = str(user["_id"])
             return redirect(url_for("home"))
         else:
             flash("Wrong username or password")
@@ -46,9 +49,9 @@ def login():
 @app.route("/signup", methods=["POST"])
 def signup():
     if ("username" in request.form and "password" in request.form):
-        user = mongo_utils.create_new_user(request.form["username"], request.form["password"])
-        if (user != None):
-            session["uid"] = user["_id"]
+        if (mongo_utils.create_new_user(request.form["username"], request.form["password"])):
+            session["uid"] = str(mongo_utils.get_user(request.form["username"])["_id"])
+            flash(session["uid"])
             return redirect(url_for("home"))
         else:
             flash("That username is already taken")
