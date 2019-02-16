@@ -10,6 +10,8 @@
 }
 body {
     background-color: #c2f49a;
+    background-image: url("/static/img/background.jpg");
+    
 }
 .page-footer {
     background-color: #f49ac2;
