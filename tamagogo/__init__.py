@@ -11,8 +11,6 @@ app.secret_key = os.urandom(16)
 def require_login(f):
     @wraps(f)
     def inner(*args, **kwargs):
-        print("CHECK")
-        print(session["uid"])
         if 'uid' not in session:
             flash("Please log in")
             return redirect(url_for("root"))
@@ -30,9 +28,6 @@ def root():
 
 @app.route("/login", methods=["POST"])
 def login():
-    print(request.form["username"])
-    print(request.form["password"])
-
     if ("username" in request.form and "password" in request.form):
         if (mongo_utils.authenticate(request.form["username"], request.form["password"])):
             user = mongo_utils.get_user(request.form["username"])
@@ -51,7 +46,6 @@ def signup():
     if ("username" in request.form and "password" in request.form):
         if (mongo_utils.create_new_user(request.form["username"], request.form["password"])):
             session["uid"] = str(mongo_utils.get_user(request.form["username"])["_id"])
-            flash(session["uid"])
             return redirect(url_for("home"))
         else:
             flash("That username is already taken")
