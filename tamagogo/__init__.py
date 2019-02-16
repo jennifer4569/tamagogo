@@ -8,7 +8,7 @@ app.secret_key = os.urandom(16)
 @app.route("/")
 @app.route("/home")
 def root():
-    return render_template("home.html", articles_list = articles_list[::-1])
+    return render_template("home.html")
 
 if __name__ == "__main__":
     app.debug = True
