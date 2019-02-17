@@ -14,7 +14,6 @@ egg_collection = db.eggs
 
 #The required amount of points per tier of egg
 egg_requirements = [-1, 30, 100, 175, 300, 500, 900]
-deed_list = sorted([deed for deed in deed_collection.find()], key = lambda x: x["worth"])
 
 
 ## Getters
@@ -29,7 +28,7 @@ def get_deed(id_num):
     return deed_collection.find_one({"id_num": id_num})
 
 def get_all_deeds():
-    return deed_list
+    return sorted([deed for deed in deed_collection.find()], key = lambda x: x["worth"])
 
 
 ## Auth functions
