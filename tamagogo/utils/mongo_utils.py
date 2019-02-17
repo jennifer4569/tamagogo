@@ -57,7 +57,7 @@ def do_hatch(username):
     else:
         creature_dict[cname] += 1
     user_collection.update_one({"username": username}, {"$set": {"creaturesUnlocked": creature_dict}})
-    gen_new_egg(username)
+    return gen_new_egg(username)
 
 def check_hatch(username):
     user = get_user(username)
@@ -98,6 +98,7 @@ def gen_new_egg(username):
     egg_list = [egg for egg in egg_collection.find({"rarity": tier})]
     new_egg = random.choice(egg_list)["id_string"]
     user_collection.update_one({"username": username}, {"$set": {"currEgg": new_egg}})
+    return new_egg
 
 
 def append_deed(username, deedinfo):
@@ -108,8 +109,11 @@ def append_deed(username, deedinfo):
     new_hist = user["history"] + [(deedinfo[0], deedinfo[1], str(datetime.date.today()))]
     user_collection.update_one({"username": username}, {"$set": {"history": new_hist}})
     user_collection.update_one({"username": username}, {"$inc": {"currScore": points, "totalScore": points}})
+    total_hatches = [0,0,0,0,0,0]
     while (check_hatch(username)):
-        do_hatch(username)
+        egg = do_hatch(username)
+        total_hatches[get_egg(egg)["rarity"]-1] += 1
+    return total_hatches
 
 
 def get_all_creature_info(username):

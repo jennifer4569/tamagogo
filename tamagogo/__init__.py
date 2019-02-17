@@ -84,8 +84,11 @@ def deeds():
 def reward():
     deeds = [(int(each), int(request.form[each])) for each in request.form if request.form[each]]
     user = mongo_utils.get_user(session["uname"])
+    total_hatches = [0,0,0,0,0,0]
     for deed in deeds:
-        mongo_utils.append_deed(session["uname"], deed)
+        new_hatches = mongo_utils.append_deed(session["uname"], deed)
+        total_hatches = [total_hatches[i] + new_hatches[i] for i in range(len(total_hatches))]
+    disp_message(total_hatches)
     return redirect(url_for("home"))
 
 @app.route("/collection")
@@ -97,6 +100,13 @@ def collection():
             creature_dic["creature_img"] = url_for("static", filename = "img/creatures/" + creature_dic["creature_img"] + ".png")
             creature_dic["egg_img"] = url_for("static", filename = "img/eggs/egg_" + creature_dic["egg_img"] + ".png")
     return render_template("collection.html", info=info)
+
+
+def disp_message(total_hatches):
+    rarities=["common", "uncommon", "rare", "super rare", "ultimate", "legendary"]
+    for i in range(len(total_hatches)):
+        if total_hatches[i] > 0:
+            flash("You hatched " + str(total_hatches[i]) + " " + str(rarities[i]) + " eggs.")
 
 
 if __name__ == "__main__":
