@@ -46,12 +46,15 @@ def authenticate(username, password):
 
 def check_hatch(username):
     user = get_user(username)
-    return user["currScore"] > egg_requirements[get_egg(user["currEgg"])]
+    return user["currEgg"] == "" or user["currScore"] > egg_requirements[get_egg(user["currEgg"])["rarity"]]
 
 def gen_new_egg_tier(username):
     user = get_user(username)
     if user==None:
-        return False
+        return 0
+
+
+    return 1
 
     r = random.random()
 
@@ -78,6 +81,12 @@ def gen_new_egg_tier(username):
         else:
             return 6
 
+def gen_new_egg(username):
+    tier = gen_new_egg_tier(username)
+    egg_list = [egg for egg in egg_collection.find({"rarity": tier})]
+    new_egg = random.choice(egg_list)["id_string"]
+    user_collection.update_one({"username": username}, {"$set": {"currEgg": new_egg}})
+
 
 def append_deed(username, deedinfo):
     print(username)
@@ -87,13 +96,15 @@ def append_deed(username, deedinfo):
     new_hist = user["history"] + [(deedinfo[0], deedinfo[1], str(datetime.date.today()))]
     user_collection.update_one({"username": username}, {"$set": {"history": new_hist}})
     user_collection.update_one({"username": username}, {"$inc": {"currScore": points, "totalScore": points}})
+    if (check_hatch(username)):
+        gen_new_egg(username)
 
 
 ## Creation functions
 
 def create_new_user(username, password):
     if (get_user(username) == None):
-        user = user_collection.insert(
+        user_collection.insert(
             {
                 "username": username,
                 "password": hash(username, password),
@@ -104,6 +115,7 @@ def create_new_user(username, password):
                 "history": []
             }
         )
+        gen_new_egg(username)
         return True
     else:
         return False
