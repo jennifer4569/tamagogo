@@ -11,7 +11,7 @@ app.secret_key = os.urandom(16)
 def require_login(f):
     @wraps(f)
     def inner(*args, **kwargs):
-        if 'uid' not in session:
+        if 'uname' not in session:
             flash("Please log in")
             return redirect(url_for("root"))
         else:
@@ -21,7 +21,7 @@ def require_login(f):
 
 @app.route("/")
 def root():
-    if "uid" in session:
+    if "uname" in session:
         return redirect(url_for("home"))
     return render_template("login.html")
 
@@ -32,7 +32,7 @@ def login():
         if (mongo_utils.authenticate(request.form["username"], request.form["password"])):
             user = mongo_utils.get_user(request.form["username"])
             if (user != None):
-                session["uid"] = str(user["_id"])
+                session["uname"] = user["username"]
             return redirect(url_for("home"))
         else:
             flash("Wrong username or password")
@@ -45,7 +45,7 @@ def login():
 def signup():
     if ("username" in request.form and "password" in request.form):
         if (mongo_utils.create_new_user(request.form["username"], request.form["password"])):
-            session["uid"] = str(mongo_utils.get_user(request.form["username"])["_id"])
+            session["uname"] = mongo_utils.get_user(request.form["username"])["username"]
             return redirect(url_for("home"))
         else:
             flash("That username is already taken")
@@ -57,7 +57,7 @@ def signup():
 @app.route("/logout")
 @require_login
 def logout():
-    session.pop("user_auth")
+    session.pop("uname")
 
 
 @app.route("/home")
@@ -75,6 +75,16 @@ def about():
 @require_login
 def deeds():
     return render_template("deeds.html", deeds = mongo_utils.get_all_deeds())
+
+@app.route("/reward", methods=["POST"])
+@require_login
+def reward():
+    deeds = [(int(each), int(request.form[each])) for each in request.form if request.form[each]]
+    user = mongo_utils.get_user(session["uname"])
+    for deed in deeds:
+        mongo_utils.append_deed(session["uname"], deed)
+    return redirect(url_for("home"))
+
 
 
 if __name__ == "__main__":

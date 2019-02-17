@@ -1,6 +1,7 @@
 from pymongo import MongoClient
 from hashlib import sha256
 from bson.objectid import ObjectId
+import datetime
 import random
 
 client = MongoClient()
@@ -10,10 +11,9 @@ deed_collection = db.deeds
 egg_collection = db.eggs
 
 
-## Useful constants
-
 #The required amount of points per tier of egg
 egg_requirements = [-1, 30, 100, 175, 300, 500, 900]
+deed_list = sorted([deed for deed in deed_collection.find()], key = lambda x: x["worth"])
 
 
 ## Getters
@@ -28,7 +28,7 @@ def get_deed(id_num):
     return deed_collection.find_one({"id_num": id_num})
 
 def get_all_deeds():
-    return sorted([deed for deed in deed_collection.find()], key = lambda x: x["worth"])
+    return deed_list
 
 
 ## Auth functions
@@ -80,6 +80,15 @@ def gen_new_egg_tier(username):
             return 6
 
 
+def append_deed(username, deedinfo):
+    print(username)
+    user = get_user(username)
+    deed = get_deed(deedinfo[0])
+    points = deed["worth"] * deedinfo[1]
+    new_hist = user["history"] + [(deedinfo[0], deedinfo[1], str(datetime.date.today()))]
+    user_collection.update_one({"username": username}, {"$set": {"history": new_hist}})
+    user_collection.update_one({"username": username}, {"$inc": {"currScore": points, "totalScore": points}})
+
 
 ## Creation functions
 
@@ -91,8 +100,9 @@ def create_new_user(username, password):
                 "password": hash(username, password),
                 "totalScore": 0,
                 "currScore": 0,
-                "currEgg": 0,
-                "creaturesUnlocked": {}
+                "currEgg": "",
+                "creaturesUnlocked": {},
+                "history": []
             }
         )
         return True

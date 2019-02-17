@@ -2,8 +2,9 @@ from mongo_utils import *
 
 def create_all_entries():
     deed_collection.drop()
+    egg_collection.drop()
 
-    create_egg_entry("default", 1, "undecided")
+    create_egg_entry("white", 1, "chique")
 
     create_deed_entry(1, 1, "Hold the Door", "Hold the door for a friend or a stranger.", "doors")
     create_deed_entry(2, 2, "Give a Compliment", "Tell someone they have a nice shirt, or that you like their new haircut. Small compliments can go a long way!", "smiles")
