@@ -19,7 +19,7 @@ def create_all_entries():
     mongo_utils.create_deed_entry(12, 16, "Show Someone Around", "Show a tourist the ins and outs of your city, or give someone directions.", "times")
     mongo_utils.create_deed_entry(13, 22, "Give a Friend a Gift", "...for no particular reason. It's a great way to show someone you appreciate them.", "gifts")
     mongo_utils.create_deed_entry(14, 25, "Give a Generous Tip", "...to really show how much you appreciate someone's service.", "tips")
-    mongo_utils.create_deed_entry(15, 30, "Give to Someone in Need", "Give a homeless person a few dollars, or some food. Every little bit counts.", "days made")
+    mongo_utils.create_deed_entry(15, 30, "Give to Someone in Need", "Give a homeless person a few dollars, or some food. Every little bit counts.", "smiles")
     mongo_utils.create_deed_entry(16, 35, "Advocate for Something", "Whether its rights, pride, or beliefs, stand up for something that matters. Join in a parade, or attend a rally, it's up to you how to impact the world!", "events")
     mongo_utils.create_deed_entry(17, 40, "Plant a Tree", "or a bush or some flowers. Save the Earth and beautify your town.", "plants")
     mongo_utils.create_deed_entry(18, 50, "Go Vote", "Exercise your right to vote. Every vote counts!", "votes")
