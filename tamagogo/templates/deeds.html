@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}About -- Tamagogo!{% endblock %}
+
+{% block css %} <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/about.css' ) }}"> {% endblock %}
+
+{% block body %}
+
+<div class="backing rounded">
+  <h1> Deeds </h1>
+
+  <form class="form-signin" method="POST" action="/reward">
+    <table>
+      <tr>
+	<td>Worth</td>
+	<td>Text</td>
+	<td>Description</td>
+	<td>Units</td>
+	<td>Number of Times</td>
+      </tr>
+      {% for deed in deeds %}
+      <tr>
+	<td>{{ deed["worth"] }}</td>
+	<td>{{ deed["text"] }}</td>
+	<td>{{ deed["desc"] }}</td>
+	<td>{{ deed["units"] }}</td>
+	<td><input class="form-control" type="text"></td>
+      </tr>
+      {% endfor %}
+    </table>
+
+    <input class="button btn" type="submit">
+  </form>
+</div>
+{% endblock %}
