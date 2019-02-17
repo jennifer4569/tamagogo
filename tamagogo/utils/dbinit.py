@@ -1,6 +1,8 @@
 from utils import mongo_utils
 
 def create_all_entries():
+    mongo_utils.deed_collection.drop()
+
     mongo_utils.create_egg_entry("default", 1, "undecided")
 
     mongo_utils.create_deed_entry(1, 1, "Hold the Door", "Hold the door for a friend or a stranger.", "doors")
