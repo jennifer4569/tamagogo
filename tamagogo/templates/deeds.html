@@ -24,7 +24,8 @@
 	<td>{{ deed["text"] }}</td>
 	<td>{{ deed["desc"] }}</td>
 	<td>{{ deed["units"] }}</td>
-	<td><input class="form-control" type="text"></td>
+	<td><input class="form-control" type="text" maxlength="2" pattern="[0-9]{1,2}" data-error="Please input a number between 0 to 99!" name="{{deed['id_num']}}">
+	</td>
       </tr>
       {% endfor %}
     </table>
