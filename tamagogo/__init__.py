@@ -64,7 +64,10 @@ def logout():
 @app.route("/home")
 @require_login
 def home():
-    return render_template("home.html")
+    user = mongo_utils.get_user(session["uname"])
+    curr_egg = mongo_utils.get_egg(user["currEgg"])
+
+    return render_template("home.html", egg_img=user["currEgg"], egg_progress=user["currScore"], egg_goal=mongo_utils.get_requirement(curr_egg["rarity"]))
 
 
 @app.route("/about")

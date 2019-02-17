@@ -26,6 +26,9 @@ def get_egg(id_string):
 def get_deed(id_num):
     return deed_collection.find_one({"id_num": id_num})
 
+def get_requirement(i):
+    return egg_requirements[i]
+
 def get_all_deeds():
     return sorted([deed for deed in deed_collection.find()], key = lambda x: x["worth"])
 
