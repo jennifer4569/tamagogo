@@ -12,7 +12,7 @@ def require_login(f):
     @wraps(f)
     def inner(*args, **kwargs):
         if 'uname' not in session:
-            flash("Please log in")
+            flash("Please log in to use Tamagogo")
             return redirect(url_for("root"))
         else:
             return f(*args, **kwargs)
@@ -66,8 +66,7 @@ def logout():
 def home():
     user = mongo_utils.get_user(session["uname"])
     curr_egg = mongo_utils.get_egg(user["currEgg"])
-
-    return render_template("home.html", egg_img=user["currEgg"], egg_progress=user["currScore"], egg_goal=mongo_utils.get_requirement(curr_egg["rarity"]))
+    return render_template("home.html", egg_img = url_for('static', 'img/egg/egg_' + user["currEgg"] + '.png'), egg_progress=user["currScore"], egg_goal=mongo_utils.get_requirement(curr_egg["rarity"]))
 
 
 @app.route("/about")
