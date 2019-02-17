@@ -14,7 +14,8 @@ def create_all_entries():
     create_egg_entry("pink", 2, "pingo")
     create_egg_entry("metallic", 3, "voltso")
     create_egg_entry("night", 4, "sapphire")
-    create_egg_entry("obsidian", 4, "paruiin")
+    create_egg_entry("golden", 4, "nico")
+    create_egg_entry("obsidian", 6, "paruiin")
 
 
     create_deed_entry(1, 1, "Hold the Door", "Hold the door for a friend or a stranger.", "doors")
