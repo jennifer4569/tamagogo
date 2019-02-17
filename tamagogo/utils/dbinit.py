@@ -14,6 +14,8 @@ def create_all_entries():
     create_egg_entry("pink", 2, "pingo")
     create_egg_entry("metallic", 3, "voltso")
     create_egg_entry("night", 4, "sapphire")
+    create_egg_entry("obsidian", 4, "paruiin")
+
 
     create_deed_entry(1, 1, "Hold the Door", "Hold the door for a friend or a stranger.", "doors")
     create_deed_entry(2, 2, "Give a Compliment", "Tell someone they have a nice shirt, or that you like their new haircut. Small compliments can go a long way!", "smiles")
@@ -37,6 +39,7 @@ def create_all_entries():
     create_deed_entry(20, 60, "Adopt a Pet", "Give an animal a new loving home.", "animals")
     create_deed_entry(21, 150, "Sign Up to be an Organ Donor", "Give someone the gift of life.", "times")
     create_deed_entry(22, 200, "Donate Blood", "The world has a blood shortage, do your part to help someone in need.", "pints")
+    create_deed_entry(23, 2, "Use a Reusable Bottle", "Keep the landfills plastic-free by using a reusable thermos instead of a bottle of water.", "bottles")
 
 if __name__ == '__main__':
     create_all_entries()
