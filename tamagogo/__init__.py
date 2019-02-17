@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, session, f
 from utils import mongo_utils
 from functools import wraps
 import os
-from utils import dbinit
+#from utils import dbinit
 
 app = Flask(__name__)
 app.secret_key = os.urandom(16)
