@@ -2,7 +2,6 @@ from flask import Flask, render_template, request, redirect, url_for, session, f
 from utils import mongo_utils
 from functools import wraps
 import os
-from utils import dbinit
 
 app = Flask(__name__)
 app.secret_key = os.urandom(16)
@@ -79,6 +78,6 @@ def deeds():
 
 
 if __name__ == "__main__":
-    dbinit.create_all_entries()
+    mongo_utils.create_all_entries()
     app.debug = True
     app.run(host="0.0.0.0")
