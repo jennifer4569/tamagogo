@@ -66,7 +66,7 @@ def logout():
 def home():
     user = mongo_utils.get_user(session["uname"])
     curr_egg = mongo_utils.get_egg(user["currEgg"])
-    return render_template("home.html", egg_img = url_for('static', 'img/egg/egg_' + user["currEgg"] + '.png'), egg_progress=user["currScore"], egg_goal=mongo_utils.get_requirement(curr_egg["rarity"]))
+    return render_template("home.html", egg_img = url_for('static', filename = 'img/egg/egg_' + user["currEgg"] + '.png'), egg_progress=user["currScore"], egg_goal=mongo_utils.get_requirement(curr_egg["rarity"]))
 
 
 @app.route("/about")
