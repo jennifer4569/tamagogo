@@ -9,6 +9,9 @@ user_collection = db.users
 deed_collection = db.deeds
 egg_collection = db.eggs
 
+#The required amount of points per tier of egg
+egg_requirements = [-1, 30, 100, 175, 300, 500, 900]
+
 
 def create_new_user(username, password):
     if (get_user(username) == None):
@@ -64,13 +67,14 @@ def create_egg_entry(id_string, rarity, cname):
     })
     return True
 
-def create_deed_entry(worth, text, desc, id_num):
+def create_deed_entry(id_num, worth, text, desc, units):
     if (deed_collection.find_one({"id_num": id_num}) != None):
         return False
     deed_collection.insert({
         "id_num": id_num,
         "worth": worth,
         "text": text,
-        "desc": desc
+        "desc": desc,
+        "units": units
     })
     return True
