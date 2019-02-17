@@ -1,12 +1,21 @@
-input {
-    width: 80%;
-    height: 40px;
-    margin-bottom: 5px;
-}
-
 .backing{
     background-color: rgba(255, 255, 255, .1);
     padding: 20px;
     margin-left: 5vw;
     margin-right: 5vw;
+}
+.pointvalue{
+    text-align: center;
+}
+.form-control{
+    display:inline !important;
+    width:3em;
+    height:1.5em;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+td{
+    padding-left: 7px;
+    padding-right: 7px;
+    
 }
