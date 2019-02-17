@@ -88,6 +88,10 @@ def reward():
         mongo_utils.append_deed(session["uname"], deed)
     return redirect(url_for("home"))
 
+@app.route("/collection")
+@require_login
+def collection():
+    return render_template("collection.html")
 
 
 if __name__ == "__main__":

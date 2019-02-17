@@ -10,6 +10,10 @@
 .navbar-toggler{
     float:right; 
 }
+.nav-item {
+    padding-left: 10px;
+    padding-right: 10px;
+}
 body {
     background-color: #9af4cc;
     background-image: url("/static/img/background.png");
@@ -30,4 +34,19 @@ body {
     color: white;
     font-family: 'Dancing Script', cursive;
     font-size: 20px;
+}
+
+
+.backing {
+    background-color: rgba(204, 154, 244, .2);
+}
+.btn-primary {
+    background-color: #f49ac2;
+    color: white;
+    border-color: #cc9af4;
+}
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
+    color: #fff;
+    background-color: #cc9af4;
+    border-color: #cc9af4;
 }

@@ -7,13 +7,13 @@
 {% block body %}
 <center>
   <br /> <br />
-  <div class="signin-backing card shadow">
+  <div class="backing card shadow">
     <div class="card-body" id="login-tab">
       <h2 class="card-title">Login to Tamagogo!</h2> <br />
       <form class="form-signin" method="POST" action="/login">
         <input class="form-control" placeholder="Username" type="text" name="username" required> <br />
         <input class="form-control" placeholder="Password" type="password" name="password" required> <br />
-        <input class="button btn" type="submit" value="Login"> <br />
+        <input class="button btn btn-primary" type="submit" value="Login"> <br />
       </form> <br />
       Don't have an account? <button class="btn btn-link" id="swapper-l"> Create one </a>
     </div>
@@ -23,7 +23,7 @@
       <form class="form-signin" method="POST" action="/signup">
         <input class="form-control" placeholder="Username" type="text" name="username" required> <br />
         <input id="pass" class="form-control" placeholder="Password" type="password" name="password" required> <br />
-        <input class="button btn" type="submit" value="Sign Up"> <br />
+        <input class="button btn btn-primary" type="submit" value="Sign Up"> <br />
       </form> <br />
       Already have an account? <button class="btn btn-link" id="swapper-s"> Login </a>
     </div>
