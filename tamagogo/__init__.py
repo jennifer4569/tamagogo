@@ -72,8 +72,9 @@ def about():
 
 
 @app.route("/deeds")
+@require_login
 def deeds():
-    return render_template("deeds.html", deeds = [{"id_num": 0, "worth": 5, "text": "text", "desc": "desc", "units": "seconds"}])
+    return render_template("deeds.html", deeds = mongo_utils.get_all_deeds())
 
 
 if __name__ == "__main__":
