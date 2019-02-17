@@ -1,33 +1,33 @@
 {% extends "base.html" %}
 
-{% block title %}About -- Tamagogo!{% endblock %}
+{% block title %}Submit a Deed -- Tamagogo!{% endblock %}
 
 {% block css %} <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/deeds.css' ) }}"> {% endblock %}
 
 {% block body %}
 
-<div class="backing rounded">
+<div class="backing rounded card shadow">
   <h1> Deeds </h1>
 
   <form class="form-signin" method="POST" action="/reward">
     <table>
       <tr>
-	<td>Text</td>
-	<td>Description</td>
-	<td class="pointvalue">Pts</td>
-	<td class="pointvalue">Times Done</td>
+	      <td>Text</td>
+	      <td>Description</td>
+	      <td class="pointvalue">Pts</td>
+	      <td class="pointvalue">Times Done</td>
       </tr>
       {% for deed in deeds %}
       <tr>
-	<td>{{ deed["text"] }}</td>
-	<td>{{ deed["desc"] }}</td>
-	<td class="pointvalue">{{ deed["worth"] }}</td>
-	<td><span style="inline"> <input class="form-control" type="text" maxlength="2" pattern="[0-9]{1,2}" data-error="Please input a number between 0 to 99!" name="{{deed['id_num']}}" size="1"> {{ deed["units"] }}</span></td>
+	      <td>{{ deed["text"] }}</td>
+	      <td>{{ deed["desc"] }}</td>
+	      <td class="pointvalue">{{ deed["worth"] }}</td>
+	      <td><span style="inline"> <input class="form-control" type="text" maxlength="2" pattern="[0-9]{1,2}" data-error="Please input a number between 0 to 99!" name="{{deed['id_num']}}" size="1"> {{ deed["units"] }}</span></td>
       </tr>
       {% endfor %}
     </table>
 
-    <input class="button btn" type="submit">
+    <input class="button btn btn-primary" type="submit">
   </form>
 </div>
 {% endblock %}
