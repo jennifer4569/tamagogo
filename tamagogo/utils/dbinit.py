@@ -1,4 +1,4 @@
-from utils import mongo_utils
+#from utils import mongo_utils
 
 def create_all_entries():
     mongo_utils.deed_collection.drop()
