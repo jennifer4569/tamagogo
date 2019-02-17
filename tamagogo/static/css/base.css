@@ -45,8 +45,9 @@ body {
     color: white;
     border-color: #cc9af4;
 }
+
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
-    color: #fff;
-    background-color: #cc9af4;
-    border-color: #cc9af4;
+    color: #fff !important;
+    background-color: #cc9af4 !important;
+    border-color: #cc9af4 !important;
 }

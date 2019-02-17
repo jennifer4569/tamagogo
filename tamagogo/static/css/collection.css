@@ -3,10 +3,40 @@
     text-align: center;
 }
 
+.btn {
+    margin: 10px;
+    padding: 10px;
+    width: 15%;
+}
+
 .backing {
     padding: 20px;
     margin-left: 5vw;
     margin-right: 5vw;
     margin-top: 3vw;
     margin-bottom: 3vw;
+}
+
+.tier1 {
+    background-color: rgba(100,100,100,0.2);
+}
+
+.tier2 {
+    background-color: rgba(200,200,100,0.2);
+}
+
+.tier3 {
+    background-color: rgba(100,200,100,0.2);
+}
+
+.tier4 {
+    background-color: rgba(100,100,200,0.2);
+}
+
+.tier5 {
+    background-color: rgba(200,100,100,0.2);
+}
+
+.tier6 {
+    background-color: rgba(255,255,255,0.2);
 }

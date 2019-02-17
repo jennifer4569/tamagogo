@@ -11,7 +11,11 @@
 
   <div class="container">
     {% for tier in info %}
-    <div class="row">
+    <br /><br />
+    <h3 style="display:block">
+      {{["Common", "Uncommon", "Rare", "Super Rare", "Ultimate", "Legendary"][loop.index-1]}}
+    </h3>
+    <div class="row tier{{loop.index}}">
       {% for creature in tier %}
       <div class="col-sm-6 col-lg-3 box">
         <img src="{{creature['creature_img']}}" />
@@ -22,6 +26,9 @@
       {% endfor %}
     </div>
     {% endfor %}
+
+    <br />
+    <a type="button" class="btn btn-primary" href="/home" role="button">Home</a>
   </div>
 
 </div>

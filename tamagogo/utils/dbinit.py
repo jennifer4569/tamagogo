@@ -11,10 +11,10 @@ def create_all_entries():
     create_egg_entry("red", 1, "ricky")
     create_egg_entry("pink", 1, "vicky")
     create_egg_entry("spotted", 2, "spotty")
-    create_egg_entry("pink", 2, "pingo")
+    create_egg_entry("striped", 2, "pingo")
     create_egg_entry("metallic", 3, "voltso")
     create_egg_entry("night", 4, "sapphire")
-    create_egg_entry("golden", 4, "nico")
+    create_egg_entry("golden", 5, "nico")
     create_egg_entry("obsidian", 6, "paruiin")
 
 

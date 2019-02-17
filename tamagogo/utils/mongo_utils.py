@@ -68,9 +68,6 @@ def gen_new_egg_tier(username):
     if user==None:
         return 0
 
-
-    return 1
-
     r = random.random()
 
     if user["totalScore"] < 90:

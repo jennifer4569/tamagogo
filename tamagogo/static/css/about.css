@@ -1,9 +1,10 @@
 
 .backing {
-    background-color: rgba(255, 255, 255, .1);
     padding: 20px;
     margin-left: 5vw;
     margin-right: 5vw;
+    margin-top: 3vw;
+    margin-bottom: 3vw;
 }
 
 p {
