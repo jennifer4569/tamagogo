@@ -18,7 +18,8 @@
     <div class="row tier{{loop.index}}">
       {% for creature in tier %}
       <div class="col-sm-6 col-lg-3 box">
-        <img src="{{creature['creature_img']}}" />
+        <img class="creature_pic" src="{{creature['creature_img']}}" />
+        <img class="egg_pic" src="{{creature['egg_img']}}" />
         <p>
           {{creature['name']}}: {{creature['count']}}
         </p>
