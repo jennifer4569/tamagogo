@@ -58,6 +58,7 @@ def signup():
 @require_login
 def logout():
     session.pop("uname")
+    return redirect(url_for("root"))
 
 
 @app.route("/home")

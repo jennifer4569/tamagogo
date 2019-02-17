@@ -43,10 +43,22 @@ def authenticate(username, password):
         return user["password"] == hash(username, password)
 
 
+def do_hatch(username):
+    user = get_user(username)
+    curr_egg = get_egg(user["currEgg"])
+    cname = curr_egg["cname"]
+    user_collection.update_one({"username": username}, {"$inc": {"currScore": -1 * egg_requirements[curr_egg["rarity"]]}})
+    creature_dict = user["creaturesUnlocked"]
+    if cname not in creature_dict:
+        creature_dict[cname] = 1
+    else:
+        creature_dict[cname] += 1
+    user_collection.update_one({"username": username}, {"$set": {"creaturesUnlocked": creature_dict}})
+    gen_new_egg(username)
 
 def check_hatch(username):
     user = get_user(username)
-    return user["currEgg"] == "" or user["currScore"] > egg_requirements[get_egg(user["currEgg"])["rarity"]]
+    return user["currEgg"] == "" or user["currScore"] >= egg_requirements[get_egg(user["currEgg"])["rarity"]]
 
 def gen_new_egg_tier(username):
     user = get_user(username)
@@ -96,8 +108,8 @@ def append_deed(username, deedinfo):
     new_hist = user["history"] + [(deedinfo[0], deedinfo[1], str(datetime.date.today()))]
     user_collection.update_one({"username": username}, {"$set": {"history": new_hist}})
     user_collection.update_one({"username": username}, {"$inc": {"currScore": points, "totalScore": points}})
-    if (check_hatch(username)):
-        gen_new_egg(username)
+    while (check_hatch(username)):
+        do_hatch(username)
 
 
 ## Creation functions
