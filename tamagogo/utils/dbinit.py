@@ -10,7 +10,7 @@ def create_all_entries():
     mongo_utils.create_deed_entry(3, 3, "Give Up Your Seat", "Give up your seat on a bus or a train. Even better if its for someone pregnant or elderly!", "times")
     mongo_utils.create_deed_entry(4, 3, "Use a Reusable Bag", "Go shopping with a reusable bag to cut down on plastic waste. It's fashionable and good for the environment!", "times")
     mongo_utils.create_deed_entry(5, 5, "Buy Someone a Coffee", "Or a snack, your coworker or friend will appreciate you for it.", "cups")
-    mongo_utils.create_deed_entry(6, 5, "Pick Up Some Litter", "Beautify Earth one step at a time. Even better if you can recycle.", "pieces of garbage")
+    mongo_utils.create_deed_entry(6, 5, "Pick Up Some Litter", "Beautify Earth one step at a time. Even better if you can recycle.", "pcs of garbage")
     mongo_utils.create_deed_entry(7, 10, "Apologize", "Give up an old grudge and apologize for a petty fight. It's not about being right, it's about being friends.", '"sorry"s')
     mongo_utils.create_deed_entry(8, 12, "Use Public Transport", "...instead of driving somewhere. Save the planet one train-ride at a time.", "days")
     mongo_utils.create_deed_entry(9, 15, "Walk/Bike Somewhere", "...instead of driving. As an added bonus, you get a nice cardio workout!", "days")
