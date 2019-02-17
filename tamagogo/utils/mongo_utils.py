@@ -24,6 +24,8 @@ def get_egg(id_string):
 def get_deed(id_num):
     return deed_collection.find_one({"id_num": id_num})
 
+def get_all_deeds():
+    pass
 
 
 ## Auth functions
@@ -45,7 +47,7 @@ def check_hatch(username):
     user = get_user(username)
     return user["currScore"] > egg_requirements[get_egg(user["currEgg"])]
 
-def gen_new_egg(username):
+def gen_new_egg_tier(username):
     user = get_user(username)
     if user==None:
         return False

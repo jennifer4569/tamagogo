@@ -73,7 +73,7 @@ def about():
 
 @app.route("/deeds")
 def deeds():
-    return render_template("deeds.html")
+    return render_template("deeds.html", deeds = [{"id_num": 0, "worth": 5, "text": "text", "desc": "desc", "units": "seconds"}])
 
 
 if __name__ == "__main__":
