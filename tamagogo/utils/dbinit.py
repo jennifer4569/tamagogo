@@ -5,6 +5,11 @@ def create_all_entries():
     egg_collection.drop()
 
     create_egg_entry("white", 1, "chique")
+    create_egg_entry("green", 1, "buddy")
+    create_egg_entry("blue", 1, "pebbles")
+    create_egg_entry("purple", 1, "lavender")
+    create_egg_entry("red", 1, "ricky")
+    create_egg_entry("pink", 1, "vicky")
 
     create_deed_entry(1, 1, "Hold the Door", "Hold the door for a friend or a stranger.", "doors")
     create_deed_entry(2, 2, "Give a Compliment", "Tell someone they have a nice shirt, or that you like their new haircut. Small compliments can go a long way!", "smiles")

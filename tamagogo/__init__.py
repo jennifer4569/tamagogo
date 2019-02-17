@@ -91,7 +91,12 @@ def reward():
 @app.route("/collection")
 @require_login
 def collection():
-    return render_template("collection.html")
+    info = mongo_utils.get_all_creature_info(session["uname"])
+    for tier in info:
+        for creature_dic in tier:
+            creature_dic["creature_img"] = url_for("static", filename = "img/creatures/" + creature_dic["creature_img"] + ".png")
+            creature_dic["egg_img"] = url_for("static", filename = "img/eggs/egg_" + creature_dic["egg_img"] + ".png")
+    return render_template("collection.html", info=info)
 
 
 if __name__ == "__main__":

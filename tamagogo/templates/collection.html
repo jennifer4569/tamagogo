@@ -2,13 +2,27 @@
 
 {% block title %}My Collection -- Tamagogo!{% endblock %}
 
-{% block css %} <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/deeds.css' ) }}"> {% endblock %}
+{% block css %} <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/collection.css' ) }}"> {% endblock %}
 
 {% block body %}
 
 <div class="backing rounded card shadow">
   <center> <h1> Collection </h1> </center>
 
+  <div class="container">
+    {% for tier in info %}
+    <div class="row">
+      {% for creature in tier %}
+      <div class="col-sm-6 col-lg-3 box">
+        <img src="{{creature['creature_img']}}" />
+        <p>
+          {{creature['name']}}: {{creature['count']}}
+        </p>
+      </div>
+      {% endfor %}
+    </div>
+    {% endfor %}
+  </div>
 
 </div>
 {% endblock %}

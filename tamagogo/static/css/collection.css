@@ -1,0 +1,12 @@
+.box {
+    border: 1px dotted rgba(204, 154, 244, .5);
+    text-align: center;
+}
+
+.backing {
+    padding: 20px;
+    margin-left: 5vw;
+    margin-right: 5vw;
+    margin-top: 3vw;
+    margin-bottom: 3vw;
+}

@@ -115,6 +115,22 @@ def append_deed(username, deedinfo):
         do_hatch(username)
 
 
+def get_all_creature_info(username):
+    user = get_user(username)
+    creature_dict = user["creaturesUnlocked"]
+    creatures_list = [[],[],[],[],[],[]]
+    for creature in creature_dict:
+        egg = egg_collection.find_one({"cname": creature})
+        temp_dic = {}
+        temp_dic["name"] = creature.capitalize()
+        temp_dic["creature_img"] = creature
+        temp_dic["count"] = creature_dict[creature]
+        temp_dic["egg_img"] = egg["id_string"]
+
+        creatures_list[egg["rarity"]-1].append(temp_dic)
+    print(creatures_list)
+    return creatures_list
+
 ## Creation functions
 
 def create_new_user(username, password):
