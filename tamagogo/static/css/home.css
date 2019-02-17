@@ -1,0 +1,43 @@
+body{
+    text-align: center;
+}
+.egg{
+    height: 40vh;
+}
+p {
+    text-align: left;
+}
+.progress{
+    margin: auto;
+    width:500px;
+    height: 30px;
+    font-size: 18pt;
+}
+
+.progress-bar{
+    background-color: #cc9af4;			   
+}
+.btn{
+    font-size: 25px;
+    width: 200px;
+    height: 75px;
+    margin-left: 30px;
+    margin-right: 30px;
+    background-color: #f49ac2;
+    border-color: #cc9af4;
+    padding-top: 17px;
+}
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
+    color: #fff;
+    background-color: #cc9af4;
+    border-color: #cc9af4; /*set the color you want here*/
+}
+.card {
+    width: 70vw;
+    max-width: 700px;
+}
+
+.signin-backing {
+    background-color: rgba(204, 154, 244, .2);
+}
+

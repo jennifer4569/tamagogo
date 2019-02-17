@@ -1,8 +1,29 @@
 {% extends "base.html" %}
 
+
+{% block title %}Tamagogo!{% endblock %}
+
+{% block css %}<link rel="stylesheet" href="{{ url_for('static', filename='css/home.css' ) }}" type="text/css" media="screen" />{% endblock %}
+
+
 {% block body %}
+<center>
+<br />
 
-<a class="nav-link" href="/deeds">Deeds</a>
+<div class="signin-backing card shadow">
+  <div class="card-body" id="login-tab">
+    <img class="egg"src="{{egg_img}}" alt="tamalogo"><br /><br />
 
+    <div class="progress">
+      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: {{ 100* egg_progress / egg_goal }}%;" aria-valuenow="{{ egg_progress / egg_goal }}" aria-valuemin="0" aria-valuemax="100">{{egg_progress}} / {{egg_goal}}</div>
+    </div>
 
+    <br />
+    
+    <a type="button" class="btn btn-primary" href="/deeds" role="button">Deeds</a>
+    <a type="button" class="btn btn-primary" href="/collection" role="button">Collection</a>
+  </div>
+</div>
+
+</center>
 {% endblock %}
