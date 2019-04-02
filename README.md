@@ -1,7 +1,7 @@
 # Tamagogo: Care and Collect
 ### by: Jake Zaia & Jennifer Zhang
 
-To play our game: https://tamagogo.net
+To play our game, go to https://tamagogo.net
 
 ## Inspiration
 Plant Nanny, an app that encourages you to drink water by having you empathize with a virtual plant.
