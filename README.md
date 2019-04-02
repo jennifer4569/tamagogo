@@ -1,7 +1,6 @@
 # tamagogo
-Tamagogo: Care and Collect
-
-by: Jake Zaia & Jennifer Zhang
+## Tamagogo: Care and Collect
+### by: Jake Zaia & Jennifer Zhang
 
 To play our game: https://tamagogo.net
 
